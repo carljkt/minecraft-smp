@@ -1,0 +1,35 @@
+{
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+	"eslint.useESLintClass": true,
+	"eslint.useFlatConfig": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "never",
+		"source.fixAll.eslint": "always",
+		"source.fixAll": "always"
+	},
+	"editor.trimAutoWhitespace": false,
+	"files.associations": {
+		"tsconfig.json": "jsonc",
+		"tsconfig.eslint.json": "jsonc"
+	},
+	"files.insertFinalNewline": true,
+	"files.eol": "\n",
+	"search.exclude": {
+		"**/.yarn": true,
+		"**/.next": true,
+		"**/dist": true
+	},
+	"search.followSymlinks": false,
+	"search.useParentIgnoreFiles": true,
+	"files.watcherExclude": {
+		"**/.next/*/**": true,
+		"**/.yarn/*/**": true,
+		"**/dist/*/**": true
+	},
+	"unocss.disable": true,
+	"npm.packageManager": "pnpm",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.enablePromptUseWorkspaceTsdk": true
+}

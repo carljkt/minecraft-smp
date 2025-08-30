@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Minecraft SMP Browser Example</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>Minecraft SMP Browser Example</h1>
+
+		<div class="container">
+			<h3>Connection</h3>
+			<input type="text" id="serverUrl" value="ws://localhost:25585" placeholder="WebSocket URL" />
+			<br />
+			<button onclick="connect()">Connect</button>
+			<button onclick="disconnect()">Disconnect</button>
+			<div id="status" class="status disconnected">Status: Disconnected</div>
+		</div>
+
+		<div class="container">
+			<h3>Actions</h3>
+			<button onclick="getSchema()" id="schemaBtn" disabled>Get API Schema</button>
+			<button onclick="getServerStatus()" id="statusBtn" disabled>Get Server Status</button>
+			<button onclick="getPlayers()" id="playersBtn" disabled>Get Players</button>
+			<button onclick="sendMessage()" id="messageBtn" disabled>Send System Message</button>
+			<button onclick="toggleFallDamage()" id="fallDamageBtn" disabled>Toggle Fall Damage</button>
+		</div>
+
+		<div class="container">
+			<h3>Console Log</h3>
+			<div id="log"></div>
+			<button onclick="clearLog()">Clear Log</button>
+		</div>
+
+		<script type="module" src="src/main.ts"></script>
+	</body>
+</html>

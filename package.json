@@ -1,0 +1,59 @@
+{
+	"name": "minecraft-smp",
+	"version": "0.0.1",
+	"description": "A lightweight, full-featured TypeScript library for the Minecraft Server Management Protocol",
+	"main": "./dist/index.js",
+	"module": "dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup",
+		"format": "prettier --write . && eslint --fix --format=pretty src",
+		"lint": "prettier --check . && eslint --format=pretty src",
+		"lint:fix": "pnpm run format && pnpm run lint --fix",
+		"test": "vitest",
+		"test:run": "vitest run",
+		"prepare": "husky"
+	},
+	"keywords": [
+		"minecraft",
+		"server management",
+		"protocol",
+		"client",
+		"25w35a"
+	],
+	"type": "module",
+	"homepage": "https://github.com/carljkt/minecraft-smp#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/carljkt/minecraft-smp.git"
+	},
+	"bugs": {
+		"url": "https://github.com/carljkt/minecraft-smp/issues"
+	},
+	"author": "CJKT",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"eventemitter3": "^5.0.1",
+		"ws": "^8.18.3"
+	},
+	"devDependencies": {
+		"@types/ws": "^8.18.1",
+		"@vitest/coverage-v8": "3.2.4",
+		"eslint": "^9.34.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-formatter-pretty": "^6.0.1",
+		"husky": "^9.1.7",
+		"prettier": "^3.6.2",
+		"tsup": "^8.5.0",
+		"typescript": "^5.9.2",
+		"typescript-eslint": "^8.41.0",
+		"vitest": "^3.2.4"
+	},
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"packageManager": "pnpm@10.15.0"
+}

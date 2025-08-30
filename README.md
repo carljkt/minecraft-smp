@@ -17,12 +17,9 @@ A lightweight, fully-featured TypeScript client for the **Minecraft Server Manag
   Supports sending requests (e.g., `rpc.discover`, `minecraft:players`, `minecraft:allowlist/add`) with response handling built-in.
 
 - **Full Protocol Coverage**
-
-  Includes support for core MSMP features:
-  - Discover schema endpoint: `rpc.discover`
-  - Supports namespaced methods:
-    `minecraft:players`, `minecraft:allowlist/add`, `minecraft:operators`, `minecraft:server`, `minecraft:server/settings`, `minecraft:game_rules`,
-  - Supports Notifications events such as `notification:players/joined`.
+  - Supports all namespaced methods:
+    `rpc.discover`, `minecraft:players`, `minecraft:allowlist`, `minecraft:operators`, `minecraft:server`, `minecraft:serversettings`, `minecraft:gamerules`, etc.
+  - Supports all notification events such as `notification:players`, `notification:gamerules`.
 
 ## Getting Started
 

@@ -1,6 +1,6 @@
 {
 	"name": "minecraft-smp",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "A lightweight, full-featured TypeScript library for the Minecraft Server Management Protocol",
 	"main": "./dist/index.js",
 	"module": "dist/index.js",

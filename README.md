@@ -63,7 +63,7 @@ console.log('API Schema:', schema);
 ### Adding a Player to Allowlist
 
 ```ts
-const players = [{ id: '853c80ef-3c37-49fd-aa49-938b674adae6', name: 'jeb_' }];
+const players = [{ id: '853c80ef-3c37-49fd-aa49-938b674adae6' }, { name: 'Steve' }];
 
 const result: Player[] = await client.Allowlist.add(players);
 
@@ -81,6 +81,14 @@ const message: Message = {
 	translatable: '%1$s World',
 	translatableParams: ['Hi'],
 };
+
+// using MessageBuilder
+const message = new MessageBuilder()
+	.setColor('Green')
+	.setFormat('Bold')
+	.setFormat('Italic')
+	.addText('Hello ')
+	.addText('World', { color: 'Aqua', formats: ['Bold', 'Underline'] });
 
 // Send System Message
 await client.Server.sendSystemMessage({

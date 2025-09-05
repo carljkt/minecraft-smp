@@ -1,14 +1,38 @@
 // Core Types
 
+import { RequireAtLeastOne } from './index.js';
+
 export interface Player {
 	name: string;
 	id: string;
 }
 
+/**
+ * Represents flexible input for a player.
+ *
+ * This type allows an object with:
+ * - only `id`
+ * - only `name`
+ * - or both `id` and `name`
+ *
+ * It is based on the {@link Player} type but enforces that
+ * at least one of the two keys (`id` or `name`) is required.
+ *
+ * @example
+ * // Valid
+ * const a: PlayerInput = { id: "123" };
+ * const b: PlayerInput = { name: "Alice" };
+ * const c: PlayerInput = { id: "123", name: "Alice" };
+ *
+ * // Invalid (must have at least one of id or name)
+ * const d: PlayerInput = {};
+ */
+export type PlayerInput = RequireAtLeastOne<Player, 'id' | 'name'>;
+
 export interface Message {
-	translatable: string;
-	translatableParams: string[];
-	literal: string;
+	translatable?: string;
+	translatableParams?: string[];
+	literal?: string;
 }
 
 export interface Version {
@@ -40,8 +64,12 @@ export interface IPBan {
 	source: string;
 }
 
-export interface IncomingIPBan extends IPBan {
-	player: Player;
+export interface IncomingIPBan {
+	player?: PlayerInput;
+	reason?: string;
+	expires?: Date;
+	ip?: string;
+	source?: string;
 }
 
 export interface UserBan {
@@ -51,17 +79,24 @@ export interface UserBan {
 	player: Player;
 }
 
+export interface IncomingUserBan {
+	reason?: string;
+	expires?: Date;
+	source?: string;
+	player: PlayerInput;
+}
+
 // System & Actions
 
 export interface SystemMessage {
-	receivingPlayers: Player[];
+	receivingPlayers: PlayerInput[];
 	overlay: boolean;
 	message: Message;
 }
 
-export interface KickPlayer {
-	players: Player[];
-	message: Message;
+export interface IncomingPlayerKick {
+	players: PlayerInput[];
+	message?: Message;
 }
 
 // Server State & Operators

@@ -1,5 +1,7 @@
+import { validate } from '../utils/validation.js';
 import { Client } from '../client/index.js';
-import { KickPlayer, Player } from '../types/Minecraft.js';
+import { IncomingPlayerKick, Player } from '../types/Minecraft.js';
+import { incomingPlayerKickSchema } from '../schemas/playerSchema.js';
 
 export class PlayersMethods {
 	private client: Client;
@@ -20,10 +22,13 @@ export class PlayersMethods {
 	/**
 	 * Kick players
 	 *
-	 * @param {KickPlayer[]} players - players to kick
-	 * @returns {Player[]} kicked players
+	 * @param {IncomingPlayerKick} incomingKick - The player(s) to kick with optional message.
+	 * @param {boolean} [validationOverride=false] - Whether to skip validation and send raw input.
+	 * @returns {Promise<Partial<Player>[]>} A promise resolving to the list of kicked players.
 	 */
-	async kick(players: KickPlayer[]): Promise<Player[]> {
-		return this.client.request<Player[]>('minecraft:players/kick', [players]);
+	async kick(incomingKick: IncomingPlayerKick, validationOverride: boolean = false): Promise<Partial<Player>[]> {
+		validate(incomingPlayerKickSchema, incomingKick, validationOverride);
+
+		return this.client.request<Player[]>('minecraft:players/kick', [incomingKick]);
 	}
 }

@@ -172,11 +172,11 @@ async function toggleFallDamage(): Promise<void> {
 	try {
 		const gameRules = await client.GameRules.get();
 
+		// https://minecraft.wiki/w/Game_rule
 		const fallDamageRule = gameRules.find((rule) => rule.key === 'fallDamage');
 
-		// https://minecraft.fandom.com/wiki/Game_rule
-		const toggleValue = (!JSON.parse(fallDamageRule.value)).toString();
-		client.GameRules.update({ key: 'fallDamage', value: toggleValue });
+		const toggleValue = !JSON.parse(fallDamageRule.value);
+		client.GameRules.update({ fallDamage: toggleValue });
 	} catch (error) {
 		const errorMessage = error instanceof Error ? error.message : String(error);
 		log(`Failed to toggle fall damage: ${errorMessage}`);

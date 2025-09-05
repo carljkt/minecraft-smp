@@ -1,5 +1,7 @@
+import { MessageBuilder } from '../utils/MessageBuilder.js';
 import { Client } from '../client/index.js';
-import { ServerState, SystemMessage } from '../types/Minecraft.js';
+import { Message, ServerState, SystemMessage } from '../types/Minecraft.js';
+import { normalizeMessage } from '../utils/normalize.js';
 
 export class ServerMethods {
 	private client: Client;
@@ -39,10 +41,15 @@ export class ServerMethods {
 	/**
 	 * Send a system message
 	 *
-	 * @param {SystemMessage} message - system message to send
+	 * @param {SystemMessage} systemMessage - system message to send
 	 * @returns {boolean} whether the message was sent
 	 */
-	async sendSystemMessage(message: SystemMessage): Promise<boolean> {
-		return this.client.request<boolean>('minecraft:server/system_message', [message]);
+	async sendSystemMessage(systemMessage: SystemMessage & { message: MessageBuilder | Message }): Promise<boolean> {
+		const normalized = {
+			...systemMessage,
+			message: normalizeMessage(systemMessage.message),
+		};
+
+		return this.client.request<boolean>('minecraft:server/system_message', [normalized]);
 	}
 }
